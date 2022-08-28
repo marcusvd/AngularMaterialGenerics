@@ -1,0 +1,17 @@
+<div style="padding:100px;">
+    <mat-accordion *ngFor="let entity of entities; let index = index;">
+        <br>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{panelTitle[index]}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <!-- {{PanelDescription}} -->
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <tab-g>
+            </tab-g>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
