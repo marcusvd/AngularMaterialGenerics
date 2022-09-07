@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject, flatMap, map, merge, Observable, switchMap, tap } from 'rxjs';
 
-import { ServiceBudgetDto } from 'src/company/shared/components/tab-group-g/dto/service-budget-dto';
+import { ServiceBudgetDto } from 'src/company/shared/dto/service-budget-dto';
 import { InventoryToView } from 'src/company/shared/components/table-g/dtos/inventory-to-view';
 import { PaginatorDto } from 'src/company/shared/components/table-g/dtos/paginator-dto';
 import { GenericDataSource } from 'src/company/shared/helpers/generic-datasource';
@@ -19,12 +19,14 @@ export class AppComponent implements OnInit {
 
   //table
   private _genericDataSource: GenericDataSource;
+
   public dataSource = new Observable<ServiceBudgetDto[]>();
 
   tabs: string[] = [];
 
 
   namesOfClientToTitle:string[] =[];
+  expansionDescription:string[] =[];
 
   // public _dataSource = new BehaviorSubject<any>(null);
 
@@ -36,7 +38,7 @@ export class AppComponent implements OnInit {
   // pageSize: number;
   // length: number;
 
-  entitiesr: InventoryToView[] = [];
+  entities: any[] = [];
   // private _ServicesBudgetEntities: ServiceBudgetDto[] = [];
   //table
 
@@ -111,7 +113,9 @@ export class AppComponent implements OnInit {
 
     this.dataSource.pipe(
       map((serviceBudgetDto) => {
-      this.namesOfClientToTitle =  serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.client.name)
+      this.namesOfClientToTitle =  serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.client.name);
+      this.expansionDescription = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.clientProblems)
+      this.entities = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle);
       })
     ).subscribe();
 

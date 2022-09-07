@@ -1,7 +1,22 @@
-<expansion-panel [dataSourceInput]="dataSource" [panelTitle]="namesOfClientToTitle">
+<div style="padding:100px;">
+    <expansion-panel *ngFor="let ttt of dataSource | async let i = index;" [panelTitle]="ttt.client.name" [panelDescription]="ttt.client.name">
+        <tab-g [titleTabs]="['Cliente','Técnico']">
+            <!-- {{entities[i].client.name}} -->
+            <approach-tests></approach-tests>
+        </tab-g>
+    </expansion-panel>
+    <div>
+    </div>
+</div>
 
 
-</expansion-panel>
+
+
+<!-- <ng-container [ngTemplateOutlet]="here" here></ng-container>
+  <ng-template #here>
+
+    <tab-g [titleTabs]="['Cliente','Técnico']"></tab-g>
+</ng-template> -->
 
 <!-- <div style="padding:30px;">
     <search-table (searchKey)="search($event)" [searchByText]="true"></search-table>
@@ -11,7 +26,6 @@
     <paginated-table (pgEvent)="paging($event)" [dataSourceInput]="dataSource" [pageSizeOptionsInput]="pageSizeOptions" [displayedColumnsInput]="displayedColumnsInventory" [displayedColumnsInputBr]="displayedColumnsInventoryBr" [pageIndex]="this.pageIndex"
         [pageSize]="this.pageSize" [length]="this.length">
     </paginated-table>
-
 </div> -->
 
 

@@ -1,6 +1,6 @@
 import { AddressDto } from "./address-dto";
 import { ContactDto } from "./contact-dto";
-import { ServiceBudgetDto } from "../../tab-group-g/dto/service-budget-dto";
+import { ServiceBudgetDto } from "../../../dto/service-budget-dto";
 
 export class ClientDto {
   id: number;

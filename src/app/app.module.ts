@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/company/shared/modules/shared.module';
 import { MaterialModule } from 'src/company/shared/modules/material.module';
 
-import { TabGroupGModule } from 'src/company/shared/components/tab-group-g/modules/tab-group-g.module';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
 
 @NgModule({

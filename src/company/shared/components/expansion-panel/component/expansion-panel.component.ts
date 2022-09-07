@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'expansion-panel',
@@ -8,11 +8,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ExpansionPanelComponent implements OnInit {
 
+
+
+  // public entities = [];
+
+  // @Input() panelTitle: string[] = [];
+  // @Input() panelDescription: string[] = [];
+  //  @Input() panelBody: any[] = [];
+  // @Input() dataSourceInput = new Observable<any>();
+  // panelOpenState = false;
+
   public entities = [];
 
-  @Input() panelTitle: string[] = [];
-  @Input() panelDescription: string[] = [];
-  @Input() panelBody: any[] = [];
+  @Input() panelTitle: string;
+  @Input() panelDescription: string;
+  //  @Input() panelBody: any[] = [];
   @Input() dataSourceInput = new Observable<any>();
   panelOpenState = false;
 
@@ -22,9 +32,8 @@ export class ExpansionPanelComponent implements OnInit {
 
 
 
-
   ngOnInit(): void {
-    console.log(this.panelTitle)
+    // console.log(this.panelTitle)
     this.dataSourceInput.subscribe(
       toView => {
         this.entities = toView;

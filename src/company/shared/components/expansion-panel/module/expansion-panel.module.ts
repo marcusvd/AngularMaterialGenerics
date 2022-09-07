@@ -1,10 +1,11 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MaterialModule } from "src/company/shared/modules/material.module";
-import { SharedModule } from "src/company/shared/modules/shared.module";
-import { TabGroupGModule } from "../../tab-group-g/modules/tab-group-g.module";
-import { ExpansionPanelComponent } from "../component/expansion-panel.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { MaterialModule } from "src/company/shared/modules/material.module";
+import { TabGModule } from "../../tab-g/modules/tab-g.module";
+import { ExpansionPanelComponent } from "../component/expansion-panel.component";
 
 
 @NgModule({
@@ -13,8 +14,10 @@ import { ExpansionPanelComponent } from "../component/expansion-panel.component"
   ],
   imports: [
     MaterialModule,
-    TabGroupGModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     ExpansionPanelComponent,

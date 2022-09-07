@@ -2,27 +2,27 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MaterialModule } from "src/company/shared/modules/material.module";
-import { SharedModule } from "src/company/shared/modules/shared.module";
-import { TabGroupGComponent } from "../component/tab-group-g.component";
 
+import { MaterialModule } from "src/company/shared/modules/material.module";
+import { TabGComponent } from "../component/tab-g.component";
 import { ServicesBudgetListService } from "../../../../../app/services/services-budget-list.service";
 import { ClientListService } from "src/app/services/client-list.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
-    TabGroupGComponent
+    TabGComponent,
   ],
   imports: [
     MaterialModule,
     CommonModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
 
   ],
   exports: [
-    TabGroupGComponent
+    TabGComponent
   ],
   providers:[
     ServicesBudgetListService,
@@ -30,6 +30,6 @@ import { ClientListService } from "src/app/services/client-list.service";
   ]
 })
 
-export class TabGroupGModule {
+export class TabGModule {
 
 }

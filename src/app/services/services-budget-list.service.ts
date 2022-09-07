@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { environment } from "src/environments/environment";
-import { ServiceBudgetDto } from "../../company/shared/components/tab-group-g/dto/service-budget-dto";
+import { ServiceBudgetDto } from "../../company/shared/dto/service-budget-dto";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 import { ClientListService } from "./client-list.service";
 import { ClientDto } from "../../company/shared/components/table-g/dtos/client-dto";

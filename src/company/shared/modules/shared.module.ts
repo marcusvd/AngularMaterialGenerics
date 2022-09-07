@@ -2,22 +2,23 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MaterialModule } from "./material.module";
 import { UrlBackEndService } from "src/backEnd/url-backend.service";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CardGenericListService } from "../components/card-simple-g/services/card-g-list.service";
 import { TableGModule } from "../components/table-g/modules/table-g.module";
 import { TableGModuleExpandable } from "../components/table-g-expandable/modules/table-g-expandable.module";
-import { TabGroupGModule } from "../components/tab-group-g/modules/tab-group-g.module";
 import { ExpansionPanelModule } from "../components/expansion-panel/module/expansion-panel.module";
+import { TabGModule } from "../components/tab-g/modules/tab-g.module";
+import { ApproachTestsComponent } from "../components/approach-tests/approach-tests.component";
+
 
 
 
 @NgModule({
   declarations: [
-
+    ApproachTestsComponent
   ],
   imports: [
     CommonModule,
@@ -28,9 +29,11 @@ import { ExpansionPanelModule } from "../components/expansion-panel/module/expan
 
     MaterialModule,
     TableGModule,
-    TabGroupGModule,
+    TabGModule,
     TableGModuleExpandable,
-    ExpansionPanelModule
+    ExpansionPanelModule,
+
+
   ],
   exports: [
     CommonModule,
@@ -39,12 +42,13 @@ import { ExpansionPanelModule } from "../components/expansion-panel/module/expan
     HttpClientModule,
     BrowserAnimationsModule,
 
-
     MaterialModule,
     TableGModule,
-    TabGroupGModule,
+    TabGModule,
     TableGModuleExpandable,
-    ExpansionPanelModule
+    ExpansionPanelModule,
+    ApproachTestsComponent
+
   ],
   providers: [
     CardGenericListService,

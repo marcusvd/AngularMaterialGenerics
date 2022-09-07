@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppServiceBudgetService } from 'src/app/services/app.services';
-import { ServiceBudgetDto } from '../components/tab-group-g/dto/service-budget-dto';
+import { ServiceBudgetDto } from '../dto/service-budget-dto';
 
 @Injectable({
   providedIn: 'root'

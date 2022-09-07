@@ -7,7 +7,7 @@ import { AlternativeService } from "../components/table-g-expandable/services/al
 import { TableGenericListService } from "../components/table-g-expandable/services/table-g-list.service";
 import { AppInventoryService, AppServiceBudgetService } from "src/app/services/app.services";
 import { ClientListService } from "src/app/services/client-list.service";
-import { ServiceBudgetDto } from "../components/tab-group-g/dto/service-budget-dto";
+import { ServiceBudgetDto } from "../dto/service-budget-dto";
 import { ClientDto } from "../components/table-g/dtos/client-dto";
 
 
