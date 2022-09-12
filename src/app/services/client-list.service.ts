@@ -98,32 +98,3 @@ export class ClientListService extends BackEndService<ClientDto, number> {
 
 
 }
-
-// @Injectable()
-// export class CompanyService extends BackEndService<CompanyDto, number>{
-//   private _companies: CompanyDto[] = [];
-
-
-
-//   constructor(
-//     protected Http: HttpClient,
-//     private _Fb: FormBuilder,
-//     private _SnackBar: MsgOperation,
-//     private _Route: Router,
-//     public _ValidationMsg: ValidatorsService,
-
-//   ) { super(Http, environment._COMPANIES) }
-
-
-//   get cdEntity() {
-//     return this._companies
-//   }
-
-
-//   getAllMonth() {
-//     this.loadAll$<CompanyDto>().subscribe((cd: CompanyDto[]) => {
-//       this._companies = cd;
-//     })
-//   }
-
-// }

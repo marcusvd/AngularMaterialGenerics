@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from 'src/company/shared/modules/shared.module';
 import { MaterialModule } from 'src/company/shared/modules/material.module';
-
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
+import { TestedComponent } from 'src/tested/tested.component';
+import { TestingComponent } from 'src/testing/testing.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestedComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +24,10 @@ import { AppInventoryService, AppServiceBudgetService } from './services/app.ser
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
+
+
+  ],
+  exports:[
 
   ],
 

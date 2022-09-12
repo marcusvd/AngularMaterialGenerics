@@ -12,6 +12,7 @@ import { TableGModuleExpandable } from "../components/table-g-expandable/modules
 import { ExpansionPanelModule } from "../components/expansion-panel/module/expansion-panel.module";
 import { TabGModule } from "../components/tab-g/modules/tab-g.module";
 import { ApproachTestsComponent } from "../components/approach-tests/approach-tests.component";
+import { GridGModule } from "../components/grid-g/modules/grid-g.module";
 
 
 
@@ -32,6 +33,7 @@ import { ApproachTestsComponent } from "../components/approach-tests/approach-te
     TabGModule,
     TableGModuleExpandable,
     ExpansionPanelModule,
+    GridGModule,
 
 
   ],
@@ -47,7 +49,9 @@ import { ApproachTestsComponent } from "../components/approach-tests/approach-te
     TabGModule,
     TableGModuleExpandable,
     ExpansionPanelModule,
-    ApproachTestsComponent
+    ApproachTestsComponent,
+    GridGModule
+
 
   ],
   providers: [

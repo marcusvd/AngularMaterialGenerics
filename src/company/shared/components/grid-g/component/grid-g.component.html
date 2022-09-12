@@ -1,0 +1,67 @@
+<mat-grid-list [cols]="numberGridCols" [rowHeight]="rowHeight" [style.background]="gridBackGroundColor" [style.color]="gridTextColor">
+
+
+
+
+
+
+
+    <!-- <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="row">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+    <div fxLayout="column">
+        TE S TE
+    </div>
+ -->
+
+
+
+    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.numberCols" [rowspan]="tile.numberRows" [style.background]="tile.backGroundColor" [style.color]="tile.textColor">
+
+
+
+
+
+
+
+
+        <div fxLayout="row">
+            TE S TE
+        </div>
+
+
+
+
+    </mat-grid-tile>
+
+</mat-grid-list>
