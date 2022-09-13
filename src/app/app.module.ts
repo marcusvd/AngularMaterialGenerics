@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/company/shared/modules/material.module';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
 import { TestedComponent } from 'src/tested/tested.component';
 import { TestingComponent } from 'src/testing/testing.component';
+import { GridGComponent } from 'src/company/shared/components/grid-g/component/grid-g.component';
 
 
 @NgModule({
