@@ -19,6 +19,8 @@ export class GridGComponent implements OnInit {
 
   //Tile
   @Input() tiles: Tile[] = [];
+  // using manually
+
 
   constructor() { }
 

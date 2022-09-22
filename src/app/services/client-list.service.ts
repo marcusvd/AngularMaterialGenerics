@@ -37,7 +37,9 @@ export class ClientListService extends BackEndService<ClientDto, number> {
   constructor(
     protected override _Http: HttpClient
   ) {
-    super(_Http, environment._CLIENTS
+    super(_Http,
+      environment._CLIENTS,
+      environment._CLIENTSBYIDALLINCLUDED
     );
 
   }
@@ -94,6 +96,40 @@ export class ClientListService extends BackEndService<ClientDto, number> {
   set data($event: any) {
     this.getSetdata = $event;
   }
+
+  getDataMap() {
+
+    const dataMap = new Map<string, string[]>();
+
+    this.getByIdAsyncIncluded$(1).subscribe((client: ClientDto) => {
+
+      dataMap.set(client.name, [client.cnpj, client.clientType])
+    })
+
+    return dataMap;
+  }
+
+
+  // getTitle() {
+
+  //   const rootLevelNodes: string[] = [];
+  //   rootLevelNodes.push();
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

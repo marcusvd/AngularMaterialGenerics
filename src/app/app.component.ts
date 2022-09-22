@@ -7,6 +7,7 @@ import { InventoryToView } from 'src/company/shared/components/table-g/dtos/inve
 import { PaginatorDto } from 'src/company/shared/components/table-g/dtos/paginator-dto';
 import { GenericDataSource } from 'src/company/shared/helpers/generic-datasource';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
+import { Router } from '@angular/router';
 
 
 
@@ -44,7 +45,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _ServicesBudgetListService: AppServiceBudgetService,
-    private _AppInventoryService: AppInventoryService
+    private _AppInventoryService: AppInventoryService,
+    private _route: Router,
   ) {
 
   }
@@ -69,6 +71,8 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    // this._route.navigateByUrl(`${'tree'}/${1}`);
     //tab
     // this._servicesBudgetListService.details(1);
 

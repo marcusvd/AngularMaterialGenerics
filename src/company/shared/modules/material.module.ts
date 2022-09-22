@@ -13,6 +13,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatGridTile} from '@angular/material/grid-list/grid-tile'
 
@@ -23,6 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [],
   imports: [
+    FlexLayoutModule,
+
     MatInputModule,
     MatTableModule,
     MatTabsModule,
@@ -37,12 +41,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatExpansionModule,
     MatIconModule,
     MatGridListModule,
-
-    FlexLayoutModule
-
+    MatTreeModule,
+    MatProgressBarModule,
 
   ],
   exports: [
+    FlexLayoutModule,
+
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
@@ -57,8 +62,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatExpansionModule,
     MatIconModule,
     MatGridListModule,
+    MatTreeModule,
+    MatProgressBarModule,
 
-    FlexLayoutModule
 
   ],
   providers: []

@@ -1,11 +1,30 @@
 <mat-grid-list [cols]="numberGridCols" [rowHeight]="rowHeight" [style.background]="gridBackGroundColor" [style.color]="gridTextColor">
 
-    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.numberCols" [rowspan]="tile.numberRows" [style.background]="tile.backGroundColor" [style.color]="tile.textColor">
+
+    <mat-grid-tile>
+
+        <!-- <div fxLayout="row">
+        {{tile.text}}
+    </div> -->
+        <ng-content></ng-content>
+
+
+
+    </mat-grid-tile>
+
+
+
+
+
+    <!-- <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.numberCols" [rowspan]="tile.numberRows" [style.background]="tile.backGroundColor" [style.color]="tile.textColor">
 
         <div fxLayout="row">
             {{tile.text}}
         </div>
+        <div fxLayout="row">
+            <ng-content></ng-content>
+        </div>
 
-    </mat-grid-tile>
+    </mat-grid-tile> -->
 
 </mat-grid-list>
