@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MaterialModule } from "./material.module";
 import { UrlBackEndService } from "src/backEnd/url-backend.service";
-import { CardGenericListService } from "../components/card-simple-g/services/card-g-list.service";
 import { TableGModule } from "../components/table-g/modules/table-g.module";
 import { TableGModuleExpandable } from "../components/table-g-expandable/modules/table-g-expandable.module";
 import { ExpansionPanelModule } from "../components/expansion-panel/module/expansion-panel.module";
@@ -14,6 +13,8 @@ import { TabGModule } from "../components/tab-g/modules/tab-g.module";
 import { ApproachTestsComponent } from "../components/approach-tests/approach-tests.component";
 import { GridGModule } from "../components/grid-g/modules/grid-g.module";
 import { TreeGModule } from "../components/tree-g/modules/tree-g.module";
+import { CardGModule } from "../components/card-g/module/card-g.module";
+import { CardGBreakPointsModule } from "../components/card-g-breakpoints/module/card-g-breakpoints.module";
 
 
 
@@ -37,7 +38,9 @@ import { TreeGModule } from "../components/tree-g/modules/tree-g.module";
     TableGModuleExpandable,
     ExpansionPanelModule,
     GridGModule,
-    TreeGModule
+    TreeGModule,
+    CardGModule,
+    CardGBreakPointsModule
 
   ],
   exports: [
@@ -54,11 +57,11 @@ import { TreeGModule } from "../components/tree-g/modules/tree-g.module";
     ExpansionPanelModule,
     ApproachTestsComponent,
     GridGModule,
-    TreeGModule
-
+    TreeGModule,
+    CardGModule,
+    CardGBreakPointsModule
   ],
   providers: [
-    CardGenericListService,
     UrlBackEndService,
     ]
 })

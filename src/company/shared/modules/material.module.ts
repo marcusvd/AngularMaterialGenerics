@@ -16,9 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatGridListModule} from '@angular/material/grid-list'
-import {MatGridTile} from '@angular/material/grid-list/grid-tile'
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridTile} from '@angular/material/grid-list/grid-tile'
 
 
 
@@ -43,7 +44,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatGridListModule,
     MatTreeModule,
     MatProgressBarModule,
-
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -64,6 +66,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatGridListModule,
     MatTreeModule,
     MatProgressBarModule,
+    MatDialogModule,
+    MatButtonModule
 
 
   ],

@@ -110,18 +110,18 @@ export class AppComponent implements OnInit {
     // })
 
 
-    this._genericDataSource = new GenericDataSource(null, null, this._ServicesBudgetListService, null);
+    // this._genericDataSource = new GenericDataSource(null, null, this._ServicesBudgetListService, null);
 
-    this.dataSource = this._genericDataSource.serviceBudgetLoad$();
+    // this.dataSource = this._genericDataSource.serviceBudgetLoad$();
 
 
-    this.dataSource.pipe(
-      map((serviceBudgetDto) => {
-      this.namesOfClientToTitle =  serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.client.name);
-      this.expansionDescription = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.clientProblems)
-      this.entities = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle);
-      })
-    ).subscribe();
+    // this.dataSource.pipe(
+    //   map((serviceBudgetDto) => {
+    //   this.namesOfClientToTitle =  serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.client.name);
+    //   this.expansionDescription = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle.clientProblems)
+    //   this.entities = serviceBudgetDto.map(namesOfClientToTitle => namesOfClientToTitle);
+    //   })
+    // ).subscribe();
 
 
 

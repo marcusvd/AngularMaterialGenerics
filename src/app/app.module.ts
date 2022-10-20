@@ -13,13 +13,15 @@ import { TestingComponent } from 'src/testing/component/testing.component';
 import { GridGComponent } from 'src/company/shared/components/grid-g/component/grid-g.component';
 import { TestingModule } from 'src/testing/modules/testing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { TestsComponent } from './tests/tests.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TestedComponent,
-    TestingComponent
+    TestingComponent,
+    TestsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     MaterialModule,
     TestingModule,
-    MatButtonModule
+    MatButtonModule,
+
 
   ],
   exports:[
