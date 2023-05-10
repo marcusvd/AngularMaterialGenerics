@@ -34,7 +34,12 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
       params = params.append('pgsize', pgSize.toString());
     }
 
-    return this._Http.get<T>('http://localhost:5000/api/customers/GetAllPagedCustomersAsync', { observe: 'response', params }).pipe(take(1));
+    if(term){
+      params = params.append('term', term.toString());
+    }
+
+
+    return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
   }
 
   getByIdAsyncIncluded$<T>(id: ID): Observable<T> {

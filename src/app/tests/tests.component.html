@@ -1,4 +1,4 @@
-<filter-front (params)="filtering1($event)"></filter-front>
+<filter-front (params)="filtering($event)"></filter-front>
 <paginated-table (SortOut)="sort($event)" [dataSourceInput]="dataTable" [displayedColumnsInput]="columnsFields" [displayedColumnsUserShows]="columnsNamesToDisplay">
     <paginator (pgEvent)="pageChange($event)" [pageIndex]="pageIndex" [length]="length" [pageSize]="pageSize" [pageSizeOptionsInput]="pageSizeOptionsInput"></paginator>
 </paginated-table>

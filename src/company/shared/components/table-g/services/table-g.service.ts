@@ -5,7 +5,9 @@ import { Sort } from "@angular/material/sort";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { PaginatorDto } from "../dtos/paginator-dto";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
+import { debounce, debounceTime, distinctUntilChanged, map, switchMap, tap } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root' })
 
@@ -13,9 +15,13 @@ export class TableGService extends BackEndService<CustomerDto, number>{
 
   constructor(
     private _http: HttpClient
-  ) { super(_http) }
+  ) { super(_http, environment._base) }
 
-  private sortedData: any[];
+
+  term: Subject<string> = new Subject<string>();
+  result: Subscription = new Subscription();
+  resulte: Observable<HttpResponse<any[]>> = new Observable<HttpResponse<any[]>>();
+
 
   paginatorBehaviorSubject = new BehaviorSubject<PaginatorDto>(null);
 
@@ -37,30 +43,56 @@ export class TableGService extends BackEndService<CustomerDto, number>{
     return this._pageSize;
   }
 
-  GetAllPaginated(url:string, pgNumber: number, pgSize: number) {
-    this.loadAllPaged$<any[]>(url, pgNumber, pgSize).
+  GetAllPaginated(url: string, pgNumber: number, pgSize: number, term?: string) {
+
+    this.loadAllPaged$<any[]>(url, pgNumber, pgSize, term).
       subscribe((response: HttpResponse<any[]>) => {
 
-        const paginatorFromBackEndHeaders = JSON.parse(response.headers.get('pagination'));
-
-        const paginator: PaginatorDto = new PaginatorDto();
-        paginator.length = paginatorFromBackEndHeaders.totalCount;
-        paginator.pageIndex = paginatorFromBackEndHeaders.currentPg - 1;
-        paginator.pageSize = paginatorFromBackEndHeaders.pgSize;
+        const pagination = JSON.parse(response.headers.get('pagination'));
 
         this._dataTable.data = response.body;
-        this.paginatorBehaviorSubject.next(paginator);
+
+        this.paginatorBehaviorSubject.next(this.paginator(pagination));
+
         this.sortData({ active: 'id', direction: 'asc' }, this._dataTable)
-      }
-      )
-    return this.paginatorBehaviorSubject
+      })
+
   }
 
-    sortData(sort: Sort, dataTable: MatTableDataSource<any>) {
+  paginator(paginatorFromBackEndHeaders: any) {
+    const paginator: PaginatorDto = new PaginatorDto();
+    paginator.length = paginatorFromBackEndHeaders.totalCount;
+    paginator.pageIndex = paginatorFromBackEndHeaders.currentPg - 1;
+    paginator.pageSize = paginatorFromBackEndHeaders.pgSize;
+    return paginator
+  }
+
+  // GetAllPaginated(url: string, pgNumber: number, pgSize: number, term?: string) {
+
+  // this.term.pipe(map(value => value.trim()),
+  //   debounceTime(200),
+  //   distinctUntilChanged(),
+  //   switchMap((x:string) => this.loadAllPaged$<any[]>(url, pgNumber, pgSize, x ))).
+  //   subscribe((response: HttpResponse<any[]>) => {
+  //     const paginatorFromBackEndHeaders = JSON.parse(response.headers.get('pagination'));
+  //     const paginator: PaginatorDto = new PaginatorDto();
+  //     paginator.length = paginatorFromBackEndHeaders.totalCount;
+  //     paginator.pageIndex = paginatorFromBackEndHeaders.currentPg - 1;
+  //     paginator.pageSize = paginatorFromBackEndHeaders.pgSize;
+  //     this._dataTable.data = response.body;
+  //     this.paginatorBehaviorSubject.next(paginator);
+  //     this.sortData({ active: 'id', direction: 'asc' }, this._dataTable)
+  //   })
+
+  // }
+
+  private sortedData: any[];
+  sortData(sort: Sort, dataTable: MatTableDataSource<any>) {
 
     const getSetdata = dataTable;
     this.sortedData = getSetdata.data.slice();
     const data = this.sortedData.slice();
+
     if (!sort.active || sort.direction === '') {
       this.sortedData = data;
       return;
@@ -85,4 +117,35 @@ export class TableGService extends BackEndService<CustomerDto, number>{
 
   }
 
+
+  //   PaginatedReturn(url: string, pgNumber: number, pgSize: number, term?: string) {
+  // this.GetAllPaginated(url, pgNumber, pgSize, term)
+
+  //     const paginatorFromBackEndHeaders = JSON.parse(response.headers.get('pagination'));
+  //     const paginator: PaginatorDto = new PaginatorDto();
+  //     paginator.length = paginatorFromBackEndHeaders.totalCount;
+  //     paginator.pageIndex = paginatorFromBackEndHeaders.currentPg - 1;
+  //     paginator.pageSize = paginatorFromBackEndHeaders.pgSize;
+  //     this._dataTable.data = response.body;
+  //     this.paginatorBehaviorSubject.next(paginator);
+  //     this.sortData({ active: 'id', direction: 'asc' }, this._dataTable)
+
+  //   }
+
+
+
 }
+
+    //
+
+    //
+
+    //
+    //
+    //
+    //
+
+    //
+    //
+    //
+    //

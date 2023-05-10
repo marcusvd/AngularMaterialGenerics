@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  _base: 'http://localhost:5000/api',
+
   _SUPPLIER: 'http://localhost:5000/api/suppliers',
 
   _INVENTORIES: 'http://localhost:5000/api/inventories',
