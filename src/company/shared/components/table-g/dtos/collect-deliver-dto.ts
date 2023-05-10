@@ -1,37 +1,22 @@
-import { CompanyDto } from "./company-dto";
-import { ClientDto } from "./client-dto";
-import { PartnerDto } from "./partner-dto";
+
 
 export class CollectDeliverDto {
   id: number;
-
-  transporterNoregisterd: string;
-
-  transporterId: number;
-  transporter: PartnerDto;
   subject: string;
-  //SOURCE
-  sourceClientId: number;
-  sourceClient: ClientDto;
-  sourcePartnerId: number;
-  sourcePartner: PartnerDto;
-  sourceCompanyId: number;
-  sourceCompany: CompanyDto;
-  sourceNoRegisterName: string;
-  sourceNoRegisterAddress: string;
-
-  //DESTINY
-  destinyClientId: number;
-  destinyClient: ClientDto;
-  destinyPartnerId: number;
-  destinyPartner: PartnerDto;
-  destinyCompanyId: number;
-  destinyCompany: CompanyDto;
-  destinyNoRegisterName: string;
-  destinyNoRegisterAddress: string;
-
+  ownerResponsible:string;
+  charge: boolean;
+  chargeFrom: string;
+  collect: boolean;
+  deliver: boolean;
   start: Date;
   price: number;
-  items: string;
+  itemsCollected: string;
+  itemsDelivered: string;
   comments: string;
+  transporterNoregisterd: string;
+  transporterId: number;
+  customerId: number;
+  partnerId: number;
+  companyId: number;
+  noRegisterNameAddress: string;
 }

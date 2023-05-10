@@ -1,0 +1,19 @@
+<mat-vertical-stepper #stepper [linear]="isLinear">
+    <mat-step *ngFor="let currentUserInteraction of currentUserInteractions">
+        <ng-template matStepLabel>
+            {{currentUserInteraction.name}}
+        </ng-template>
+        <div *ngIf="currentUserInteraction.name == 'first'">
+            Primeiro
+        </div>
+        <div *ngIf="currentUserInteraction.name == 'second'">
+            Segundo
+        </div>
+        <div *ngIf="currentUserInteraction.name == 'third'">
+            Terceiro
+        </div>
+        <div *ngIf="currentUserInteraction.name == 'fourth'">
+            Quarto
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

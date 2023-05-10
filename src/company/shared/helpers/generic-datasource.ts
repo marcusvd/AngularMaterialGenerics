@@ -8,7 +8,7 @@ import { TableGenericListService } from "../components/table-g-expandable/servic
 import { AppInventoryService, AppServiceBudgetService } from "src/app/services/app.services";
 import { ClientListService } from "src/app/services/client-list.service";
 import { ServiceBudgetDto } from "../dto/service-budget-dto";
-import { ClientDto } from "../components/table-g/dtos/client-dto";
+
 
 
 export class GenericDataSource {

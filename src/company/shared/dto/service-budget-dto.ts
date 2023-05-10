@@ -1,11 +1,11 @@
 
-import { ClientDto } from "../components/table-g/dtos/client-dto";
+import { CustomerDto } from "../components/table-g/dtos/customer-dto";
 import { SolutionPriceDto } from "./solution-price-dto";
 
 
 export class ServiceBudgetDto {
   id: number;
-  client: ClientDto;
+  client: CustomerDto;
   clientId: number;
   entryDate: Date;
   entryDateOs: Date;

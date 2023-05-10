@@ -1,40 +1,66 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'dialog-quiz-g',
-  template: `<h1 mat-dialog-title>{{title}}</h1>
-  <div mat-dialog-content>{{message}}</div>
-  <div mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close color="accent">{{btn1}}</button>
-  <button mat-raised-button mat-dialog-close color="accent">{{btn2}}</button>
-  </div>`,
-  styles: [``]
+  template: `
+  <div class="break">
+  <div fxLayout="row" fxLayoutGap="30px">
+      <div fxLayout="column">
+          <h2 mat-dialog-title>{{title}}</h2>
+      </div>
+  </div>
+  <mat-dialog-content class="break">
+      {{messageBody}}
+  </mat-dialog-content>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" style="margin-top:30px;">
+      <button mat-dialog-close mat-button style="background-color: rgb(38, 187, 38); color: white;" (click)="clickedYes(btn1)">{{btn1}}</button>
+      <button mat-button mat-dialog-close style="background-color: rgb(24, 121, 24); color: white; " (click)="clickedNo(btn2)">{{btn2}}</button>
+  </div>
+</div>
+`,
+  styles: [
+    `
+.break {
+    word-wrap: break-word;
+}
+
+#left {
+    display: inline flex;
+}
+
+#right {
+    display: inline flex;
+}
+    `
+  ]
 })
 export class DialogQuizGComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() message: string;
-  @Input() btn1: string;
-  @Input() btn2: string;
+  @Input() public first: string;
+  title: string;
+  messageBody: string;
+  btn1: string;
+  btn2: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    private _DialogRef: MatDialogRef<DialogQuizGComponent>, @Inject(MAT_DIALOG_DATA) private data: any,
 
-  ngOnInit(): void {
+  ) {
     this.title = this.data.title;
+    this.messageBody = this.data.messageBody;
     this.btn1 = this.data.btn1;
     this.btn2 = this.data.btn2;
-    console.log(this.data)
   }
 
-  // openDialog() {
-  //   this.dialog.open(DialogQuizGComponent,{
-  //     width:'500px',
-  //     height:'300px',
-  //     data:{title:'Deu bom.', btn1:'Ok', btn2:'Cancelar'}
-  //   })
-  // }
-  //this is in the component that will call it.
+  clickedYes(yes:string) {
+    this._DialogRef.close(yes);
+  }
+  clickedNo(no:string) {
+    this._DialogRef.close(no);
+  }
+
+  ngOnInit(): void {
+  }
 
 }

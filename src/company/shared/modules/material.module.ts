@@ -49,7 +49,6 @@ import {MatGridTile} from '@angular/material/grid-list/grid-tile'
   ],
   exports: [
     FlexLayoutModule,
-
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
@@ -60,6 +59,7 @@ import {MatGridTile} from '@angular/material/grid-list/grid-tile'
     MatProgressSpinnerModule,
     MatDividerModule,
     MatStepperModule,
+
     MatTabsModule,
     MatExpansionModule,
     MatIconModule,

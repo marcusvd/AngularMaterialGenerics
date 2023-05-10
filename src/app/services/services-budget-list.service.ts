@@ -6,7 +6,8 @@ import { environment } from "src/environments/environment";
 import { ServiceBudgetDto } from "../../company/shared/dto/service-budget-dto";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 import { ClientListService } from "./client-list.service";
-import { ClientDto } from "../../company/shared/components/table-g/dtos/client-dto";
+import { CustomerDto } from "src/company/shared/components/table-g/dtos/customer-dto";
+
 
 
 @Injectable()
@@ -67,8 +68,8 @@ export class ServicesBudgetListService extends BackEndService<ServiceBudgetDto, 
       srvget.forEach((srvBudget: ServiceBudgetDto) => {
         const sb: ServiceBudgetDto = srvBudget;
 
-        this._LoadClient.getByIdAsync$<ClientDto>(srvBudget.clientId).subscribe(
-          (cli: ClientDto) => {
+        this._LoadClient.getByIdAsync$<CustomerDto>(srvBudget.clientId).subscribe(
+          (cli: CustomerDto) => {
             sb.client = cli
 
             this.recordsFromDb.push(sb);

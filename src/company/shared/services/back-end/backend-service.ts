@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, HttpResponse } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, take } from "rxjs";
 import { IBackEndService } from "./ibackend-service";
 
 export class BackEndService<T, ID> implements IBackEndService<T, ID> {
@@ -23,6 +23,18 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
   }
   getAllIncludedAsync$<T>(): Observable<T[]> {
     return this._Http.get<T[]>(this._BackEndUrlIncluded);
+  }
+
+  loadAllPaged$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>> {
+
+    let params = new HttpParams();
+
+    if (pgNumber && pgSize) {
+      params = params.append('pgnumber', pgNumber.toString());
+      params = params.append('pgsize', pgSize.toString());
+    }
+
+    return this._Http.get<T>('http://localhost:5000/api/customers/GetAllPagedCustomersAsync', { observe: 'response', params }).pipe(take(1));
   }
 
   getByIdAsyncIncluded$<T>(id: ID): Observable<T> {

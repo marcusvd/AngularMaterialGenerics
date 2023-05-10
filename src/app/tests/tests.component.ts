@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogQuizGComponent } from 'src/company/shared/components/dialog-quiz-g/dialog-quiz-g.component';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { CollectDeliverDto } from 'src/company/shared/components/table-g/dtos/collect-deliver-dto';
+import { CustomerDto } from 'src/company/shared/components/table-g/dtos/customer-dto';
+import { PaginatorDto } from 'src/company/shared/components/table-g/dtos/paginator-dto';
+import { TableGService } from 'src/company/shared/components/table-g/services/table-g.service';
+import { BackEndService } from 'src/company/shared/services/back-end/backend-service';
 
 @Component({
   selector: 'tests',
@@ -9,22 +16,46 @@ import { DialogQuizGComponent } from 'src/company/shared/components/dialog-quiz-
 })
 export class TestsComponent implements OnInit {
 
-  arrayToCardTest = [
-    { title: 'Titulo1', subTitle: 'sub titulo1', content: 'conteúdo1', btnText1: 'ok', btnText2: 'cancelar' },
-    { title: 'Titulo2', subTitle: 'sub titulo2', content: 'conteúdo2', btnText1: 'ok', btnText2: 'cancelar' },
-    { title: 'Titulo3', subTitle: 'sub titulo3', content: 'conteúdo3', btnText1: 'ok', btnText2: 'cancelar' },
-    { title: 'Titulo4', subTitle: 'sub titulo4', content: 'conteúdo4', btnText1: 'ok', btnText2: 'cancelar' },
-    { title: 'Titulo5', subTitle: 'sub titulo5', content: 'conteúdo5', btnText1: 'ok', btnText2: 'cancelar' },
-    { title: 'Titulo6', subTitle: 'sub titulo6', content: 'conteúdo6', btnText1: 'ok', btnText2: 'cancelar' }
-  ];
+  dataTable = this._tableGService.dataTable;
 
+  length: number;
+  pageIndex: number;
+  pageSize: number;
+  pageSizeOptionsInput: number[] = [5, 10, 20]
 
+  @Input() columnsFields: string[] = []
+  @Input() columnsNamesToDisplay: string[] = []
+  @Input() url: string;
 
-  constructor() { }
+  constructor(
+    private _tableGService: TableGService,
+  ) { }
 
+  GetAllPaginated(pgNumber: number, pgSize: number) {
 
+    this._tableGService.GetAllPaginated(this.url, pgNumber, pgSize).subscribe((x: PaginatorDto) => {
+
+      this.length = x?.length;
+      this.pageIndex = x?.pageIndex;
+      this.pageSize = x?.pageSize;
+    })
+  }
+  filtering1(params:string) {
+    this.dataTable.data = this.dataTable.data.filter((x: CustomerDto) => x.name.toLowerCase().includes(params))
+   }
+
+  pageChange($event: any) {
+    const pgIndex = $event.pageIndex + 1;
+    this._tableGService.GetAllPaginated(this.url, pgIndex, $event.pageSize)
+  }
+
+  sort($event: Sort) {
+    const evt: Sort = $event;
+    this._tableGService.sortData(evt, this.dataTable);
+  }
 
   ngOnInit(): void {
+    this.GetAllPaginated(1, 10);
   }
 
 }

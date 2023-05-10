@@ -2,9 +2,8 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, AfterContentChecked
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { ClientListService } from 'src/app/services/client-list.service';
-import { GridGComponent } from 'src/company/shared/components/grid-g/component/grid-g.component';
-import { Tile } from 'src/company/shared/components/grid-g/interfaces/tile';
-import { ClientDto } from 'src/company/shared/components/table-g/dtos/client-dto';
+import { CustomerDto } from 'src/company/shared/components/table-g/dtos/customer-dto';
+
 
 
 @Component({
@@ -24,9 +23,9 @@ export class TestingComponent implements OnInit, AfterContentChecked, AfterViewI
   gridBackGroundColor: string = 'transparent';
   gridTextColor: string = 'green';
 
-  entities: ClientDto[] = [];
-  entity: ClientDto;
-  tiles: Tile[] = [];
+  entities: CustomerDto[] = [];
+  entity: CustomerDto;
+
   constructor(
     public _clientListService: ClientListService,
     private _actRoute: ActivatedRoute,
@@ -72,7 +71,7 @@ export class TestingComponent implements OnInit, AfterContentChecked, AfterViewI
 
 
     this._actRoute.data.subscribe((client: any) => {
-      const toTree: ClientDto = client.loaded;
+      const toTree: CustomerDto = client.loaded;
       this.dataMap.set(toTree?.name, [toTree?.cnpj, toTree?.payment.toLocaleString()]);
       this.rootLevelNodes.push(toTree?.name)
       // this._database.rootLevelNodes.push(toTree?.name);

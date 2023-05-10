@@ -7,7 +7,7 @@ export interface IBackEndService<T, ID> {
   updateAsync$<T>(id: ID, entity: T): Observable<T>;
   getAllAsync$<T>(): Observable<T[]>;
   deleteAsync$<T>(id: ID): Observable<any>;
-
+  loadAllPaged$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>>;
   getByIdAsync$<T>(id: ID): Observable<T>;
   getByIdAsyncIncluded$<T>(id: ID): Observable<T>;
 

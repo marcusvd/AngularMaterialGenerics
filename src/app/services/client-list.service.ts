@@ -1,8 +1,7 @@
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { finalize } from "rxjs/operators";
-import { ClientDto } from "src/company/shared/components/table-g/dtos/client-dto";
+import { CustomerDto } from "src/company/shared/components/table-g/dtos/customer-dto";
 import { PaginatorDto } from "src/company/shared/components/table-g/dtos/paginator-dto";
 import { TableDataSource } from "src/company/shared/helpers/table-datasource";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
@@ -14,7 +13,7 @@ import { environment } from "src/environments/environment";
 
 @Injectable()
 
-export class ClientListService extends BackEndService<ClientDto, number> {
+export class ClientListService extends BackEndService<CustomerDto, number> {
   //Columns
   private _displayedColumnsInventory = ['id', 'name', 'responsible', 'clientType', "email"];
   private _displayedColumnsInventoryBr = ['Código', 'Nome', 'Responsável', 'Tipo', 'E-Mail'];
@@ -101,9 +100,9 @@ export class ClientListService extends BackEndService<ClientDto, number> {
 
     const dataMap = new Map<string, string[]>();
 
-    this.getByIdAsyncIncluded$(1).subscribe((client: ClientDto) => {
+    this.getByIdAsyncIncluded$(1).subscribe((client: CustomerDto) => {
 
-      dataMap.set(client.name, [client.cnpj, client.clientType])
+      dataMap.set(client.name, [client.cnpj, client.id.toString()])
     })
 
     return dataMap;
