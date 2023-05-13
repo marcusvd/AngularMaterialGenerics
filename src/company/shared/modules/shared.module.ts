@@ -16,6 +16,7 @@ import { CardGBreakPointsModule } from "../components/card-g-breakpoints/module/
 import { StepperGModule } from "../components/stepper-g/module/stepper-g.module";
 import { FilterFrontComponent } from "../search/filter-front/filter-front.component";
 import { SearchFilterFrontService } from "../services/get-all-search/search-filter-front.service";
+import { TableFullGModule } from "../components/table-full-g/modules/table-full-g.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SearchFilterFrontService } from "../services/get-all-search/search-filt
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
+    TableFullGModule
 
   ],
   exports: [
@@ -59,7 +61,8 @@ import { SearchFilterFrontService } from "../services/get-all-search/search-filt
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
-    FilterFrontComponent
+    FilterFrontComponent,
+    TableFullGModule
   ],
   providers: [
     SearchFilterFrontService

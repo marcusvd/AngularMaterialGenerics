@@ -8,19 +8,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from 'src/company/shared/modules/shared.module';
 import { MaterialModule } from 'src/company/shared/modules/material.module';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
-import { TestedComponent } from 'src/tested/tested.component';
-import { TestingComponent } from 'src/testing/component/testing.component';
-import { TestingModule } from 'src/testing/modules/testing.module';
 import { MatButtonModule } from '@angular/material/button';
-import { TestsComponent } from './tests/tests.component';
+import { TestsModule } from './tests/modules/tests.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestedComponent,
-    TestingComponent,
-    TestsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +23,8 @@ import { TestsComponent } from './tests/tests.component';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    TestingModule,
     MatButtonModule,
-
+    TestsModule
 
   ],
   exports:[

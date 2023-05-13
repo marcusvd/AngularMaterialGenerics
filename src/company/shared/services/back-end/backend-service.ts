@@ -24,6 +24,12 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
   getAllIncludedAsync$<T>(): Observable<T[]> {
     return this._Http.get<T[]>(this._BackEndUrlIncluded);
   }
+  loadById$<T>(url: string, id: string): Observable<T> {
+    return this._Http.get<T>(`${this._BackEndUrl}/${url}/${id}`).pipe(take(1));
+  }
+  loadByIdLength$<T>(url: string, id: string): Observable<T> {
+    return this._Http.get<T>(`${this._BackEndUrl}/${url}/${id}`).pipe(take(1));
+  }
 
   loadAllPaged$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>> {
 
@@ -32,6 +38,7 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
     if (pgNumber && pgSize) {
       params = params.append('pgnumber', pgNumber.toString());
       params = params.append('pgsize', pgSize.toString());
+      params = params.append('companyid', 1);
     }
 
     if(term){
