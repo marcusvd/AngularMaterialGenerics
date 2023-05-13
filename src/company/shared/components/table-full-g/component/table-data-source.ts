@@ -26,7 +26,6 @@ export class TableDataSource implements DataSource<any> {
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     ).subscribe((response: any) => {
-       console.log(response)
       this.entitiesSubject.next(response.body);
     })
   }

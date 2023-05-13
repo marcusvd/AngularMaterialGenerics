@@ -48,6 +48,9 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
 
     return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
   }
+  loadAllPagedSearch$<T>(url:string, params:HttpParams): Observable<HttpResponse<T>> {
+    return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
+  }
 
   getByIdAsyncIncluded$<T>(id: ID): Observable<T> {
     return this._Http.get<T>(`${this._BackEndUrlIncluded}/${id}`);

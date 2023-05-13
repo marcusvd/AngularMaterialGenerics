@@ -2,7 +2,7 @@ import { Injectable, Input } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { Sort } from "@angular/material/sort";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpResponse } from "@angular/common/http";
 import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
 import { debounce, debounceTime, distinctUntilChanged, map, switchMap, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
@@ -84,7 +84,22 @@ export class TableFullGService extends BackEndService<CustomerDto, number>{
     //     // this.startSorted();
     //   })
   }
+  GetAllPaginatedSearch(url: string, params:HttpParams) {
 
+    return this.loadAllPagedSearch$<any[]>(url, params);
+
+    // .
+    //   subscribe((response: HttpResponse<any[]>) => {
+
+    //     const pagination = JSON.parse(response.headers.get('pagination'));
+
+    //     this._dataTable.data = response.body;
+
+    //     // this.paginatorBehaviorSubject.next(this.paginator(pagination));
+
+    //     // this.startSorted();
+    //   })
+  }
   // paginator(paginatorFromBackEndHeaders: any) {
   //   const paginator: PaginatorDto = new PaginatorDto();
   //   paginator.length = paginatorFromBackEndHeaders.totalCount;
