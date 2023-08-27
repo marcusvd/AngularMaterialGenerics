@@ -3,8 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject, flatMap, map, merge, Observable, switchMap, tap } from 'rxjs';
 
 import { ServiceBudgetDto } from 'src/company/shared/dto/service-budget-dto';
-import { InventoryToView } from 'src/company/shared/components/table-g/dtos/inventory-to-view';
-import { PaginatorDto } from 'src/company/shared/components/table-g/dtos/paginator-dto';
 import { GenericDataSource } from 'src/company/shared/helpers/generic-datasource';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
 import { Router } from '@angular/router';
@@ -58,7 +56,7 @@ export class AppComponent implements OnInit {
 
 
   paging($event) {
-    const Pagination: PaginatorDto = $event;
+    // const Pagination: PaginatorDto = $event;
     // this.dataSource.inventoryLoad(Pagination.pageIndex + 1, Pagination.pageSize);
   }
 

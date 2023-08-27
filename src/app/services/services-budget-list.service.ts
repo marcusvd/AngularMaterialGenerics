@@ -6,7 +6,8 @@ import { environment } from "src/environments/environment";
 import { ServiceBudgetDto } from "../../company/shared/dto/service-budget-dto";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 import { ClientListService } from "./client-list.service";
-import { CustomerDto } from "src/company/shared/components/table-g/dtos/customer-dto";
+import { CustomerDto } from "src/company/shared/components/table-g-grid/dto/customer-dto";
+
 
 
 

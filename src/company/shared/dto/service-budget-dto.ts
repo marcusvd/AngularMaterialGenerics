@@ -1,5 +1,6 @@
 
-import { CustomerDto } from "../components/table-g/dtos/customer-dto";
+
+import { CustomerDto } from "../components/table-g-grid/dto/customer-dto";
 import { SolutionPriceDto } from "./solution-price-dto";
 
 

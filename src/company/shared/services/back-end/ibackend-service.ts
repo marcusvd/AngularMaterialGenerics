@@ -10,7 +10,8 @@ export interface IBackEndService<T, ID> {
   loadById$<T>(url: string, id: string): Observable<T>;
   loadByIdLength$<T>(url: string, id: string): Observable<T>;
   loadAllPagedSearch$<T>(url:string, params:HttpParams): Observable<HttpResponse<T>>;
-  loadAllPaged$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>>;
+  loadAllPaged2$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>>;
+  loadAllPaged$<T>(url:string, params:HttpParams): Observable<HttpResponse<T>>;
   getByIdAsync$<T>(id: ID): Observable<T>;
   getByIdAsyncIncluded$<T>(id: ID): Observable<T>;
 

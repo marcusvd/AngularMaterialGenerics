@@ -3,10 +3,7 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
 import { MaterialModule } from "./material.module";
-import { TableGModule } from "../components/table-g/modules/table-g.module";
-import { TableGModuleExpandable } from "../components/table-g-expandable/modules/table-g-expandable.module";
 import { ExpansionPanelModule } from "../components/expansion-panel/module/expansion-panel.module";
 import { TabGModule } from "../components/tab-g/modules/tab-g.module";
 import { ApproachTestsComponent } from "../components/approach-tests/approach-tests.component";
@@ -16,12 +13,16 @@ import { CardGBreakPointsModule } from "../components/card-g-breakpoints/module/
 import { StepperGModule } from "../components/stepper-g/module/stepper-g.module";
 import { FilterFrontComponent } from "../search/filter-front/filter-front.component";
 import { SearchFilterFrontService } from "../services/get-all-search/search-filter-front.service";
-import { TableFullGModule } from "../components/table-full-g/modules/table-full-g.module";
+import { TableGGridModule } from "../components/table-g-grid/modules/table-g-grid.module";
+import { RadioButtonGModule } from "../components/radio-button-g/modules/radio-button-g.module";
+import { CheckButtonGModule } from "../components/check-button-g/modules/check-button-g.module";
+
 
 @NgModule({
   declarations: [
     ApproachTestsComponent,
     FilterFrontComponent,
+
   ],
   imports: [
     CommonModule,
@@ -29,18 +30,16 @@ import { TableFullGModule } from "../components/table-full-g/modules/table-full-
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-
     MaterialModule,
-    TableGModule,
     TabGModule,
-    TableGModuleExpandable,
     ExpansionPanelModule,
     TreeGModule,
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
-    TableFullGModule
+    TableGGridModule,
+    RadioButtonGModule,
+    CheckButtonGModule
 
   ],
   exports: [
@@ -49,20 +48,19 @@ import { TableFullGModule } from "../components/table-full-g/modules/table-full-
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     MaterialModule,
-    TableGModule,
     TabGModule,
-    TableGModuleExpandable,
     ExpansionPanelModule,
     ApproachTestsComponent,
-
     TreeGModule,
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
     FilterFrontComponent,
-    TableFullGModule
+    TableGGridModule,
+    RadioButtonGModule,
+    CheckButtonGModule
+
   ],
   providers: [
     SearchFilterFrontService

@@ -3,7 +3,14 @@
     <paginator (pgEvent)="pageChange($event)" [pageIndex]="pageIndex" [length]="length" [pageSize]="pageSize" [pageSizeOptionsInput]="pageSizeOptionsInput"></paginator>
 </paginated-table> -->
 
-<table-full-g [pageSizeOptions]="[5,10,20]" [pageSize]="10">
-
-</table-full-g>
 <!-- (pgEvent)="pageChange($event)" [pageIndex]="pageIndex" [length]="length" [pageSize]="pageSize" [pageSizeOptionsInput]="pageSizeOptionsInput" -->
+
+
+<!-- <table-g-v2 [length]="length" [pageSizeOptions]="pageSizeOptions" [dataSourceInput]="entities" [displayedColumnsInput]="columnsFields" [displayedColumnsUserShows]="columnsNamesToDisplay" [url]="url">
+</table-g-v2> -->
+
+<!-- <table-g-grid [tableHtml]="'radio'" [pageSizeOptions]="[5,10,20]" [pageSize]="10" [columnsFields]="['id', 'name']" [columnsNamesToDisplay]="['Código', 'Nome']" [url]="'customers/GetAllPagedCustomersAsync'">
+
+</table-g-grid> -->
+<check-button (selected)="radioChose($event)" [position]="'horizontal'" [entities]="radiosEntitiesDic('place')">
+</check-button>

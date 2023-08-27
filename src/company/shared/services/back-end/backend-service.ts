@@ -31,7 +31,7 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
     return this._Http.get<T>(`${this._BackEndUrl}/${url}/${id}`).pipe(take(1));
   }
 
-  loadAllPaged$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>> {
+  loadAllPaged2$<T>(url:string, pgNumber?: number, pgSize?: number, term?: string): Observable<HttpResponse<T>> {
 
     let params = new HttpParams();
 
@@ -48,6 +48,11 @@ export class BackEndService<T, ID> implements IBackEndService<T, ID> {
 
     return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
   }
+
+  loadAllPaged$<T>(url:string, params:HttpParams): Observable<HttpResponse<T>> {
+    return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
+  }
+
   loadAllPagedSearch$<T>(url:string, params:HttpParams): Observable<HttpResponse<T>> {
     return this._Http.get<T>(`${this._BackEndUrl}/${url}`, { observe: 'response', params }).pipe(take(1));
   }

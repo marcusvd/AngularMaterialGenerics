@@ -20,6 +20,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridTile} from '@angular/material/grid-list/grid-tile'
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -46,6 +51,11 @@ import {MatGridTile} from '@angular/material/grid-list/grid-tile'
     MatProgressBarModule,
     MatDialogModule,
     MatButtonModule,
+    MatListModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatRadioModule
+
 
   ],
   exports: [
@@ -68,7 +78,11 @@ import {MatGridTile} from '@angular/material/grid-list/grid-tile'
     MatTreeModule,
     MatProgressBarModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatRadioModule
 
 
   ],

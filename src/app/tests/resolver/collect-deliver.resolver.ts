@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { Observable} from "rxjs";
+import { Observable } from "rxjs";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 import { environment } from "src/environments/environment";
 
@@ -18,8 +18,8 @@ export class CollectDeliverCreateResolver extends BackEndService<any, number> im
     state: RouterStateSnapshot
   ): Observable<number> {
 
-    const customers$: Observable<number> = this.loadByIdLength$<number>('customers/GetTotalCountAsync', route.paramMap.get('id'));
-
+    const customers$: Observable<number> = this.loadByIdLength$<number>('customers/LengthCustomersAsync', '1');
+    // const customers$: Observable<number> = this.loadByIdLength$<number>('customers/LengthCustomersAsync', route.paramMap.get('id'));
     return customers$;
   }
 }

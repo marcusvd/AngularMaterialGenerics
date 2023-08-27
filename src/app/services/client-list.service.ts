@@ -1,8 +1,7 @@
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { CustomerDto } from "src/company/shared/components/table-g/dtos/customer-dto";
-import { PaginatorDto } from "src/company/shared/components/table-g/dtos/paginator-dto";
+import { CustomerDto } from "src/company/shared/components/table-g-grid/dto/customer-dto";
 import { TableDataSource } from "src/company/shared/helpers/table-datasource";
 import { BackEndService } from "src/company/shared/services/back-end/backend-service";
 
@@ -23,7 +22,7 @@ export class ClientListService extends BackEndService<CustomerDto, number> {
   public getSetdata = new MatTableDataSource<any>();
   // private sortedData: ClientTableDto[];
   //pagination
-  private _pagination: PaginatorDto = new PaginatorDto();
+  // private _pagination: PaginatorDto = new PaginatorDto();
   private _pageSizeOptions: number[] = [10, 50, 100];
   private _pageIndex: number;
   private _pageSize: number = 10;
@@ -68,7 +67,8 @@ export class ClientListService extends BackEndService<CustomerDto, number> {
     return this._length;
   }
   get pagination() {
-    return this._pagination;
+    // return this._pagination;
+    return null;
   }
 
 
@@ -102,7 +102,7 @@ export class ClientListService extends BackEndService<CustomerDto, number> {
 
     this.getByIdAsyncIncluded$(1).subscribe((client: CustomerDto) => {
 
-      dataMap.set(client.name, [client.cnpj, client.id.toString()])
+      dataMap.set(client.name, [client.name, client.id.toString()])
     })
 
     return dataMap;
