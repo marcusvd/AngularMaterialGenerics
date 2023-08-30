@@ -18,7 +18,8 @@
     <table *ngIf="tableHtml == 'none'" mat-table style="width:100%;" (matSortChange)="sortChanged($event)" [dataSource]="dataSource" class="mat-elevation-z8" [matSortActive]="'id'" matSort matSortDirection="asc" matSortDisableClear>
         <ng-container [matColumnDef]="entity" *ngFor="let entity of columnsFields; let i = index;">
 
-            <th style="font-size:25px; color:black;" mat-header-cell *matHeaderCellDef id="cod" mat-sort-header>{{columnsNamesToDisplay[i]}}</th>
+            <th style="font-size:25px; color:black;" mat-header-cell *matHeaderCellDef id="cod" mat-sort-header>
+                {{columnsNamesToDisplay[i]}}</th>
 
             <td mat-cell *matCellDef="let element" id="cod">
                 <div>
@@ -37,28 +38,27 @@
         <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
 
             <span *ngIf="i === 0">
-    <mat-header-cell *matHeaderCellDef>
-      {{'Selecione'}}
-    </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'Selecione'}}
+        </mat-header-cell>
 
-  <mat-cell *matCellDef="let row" [attr.colspan]="columnsNamesToDisplay.length"
-  [@detailExpand]="column == expandedElement ? 'expanded' : 'collapsed'"
-  >
-       <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedStart">
-         <mat-radio-button [value]="row" (change)="onChangeRadioChoice($event.value)" >
-         </mat-radio-button>
-       </mat-radio-group>
-  </mat-cell>
-</span>
+        <mat-cell *matCellDef="let row" [attr.colspan]="columnsNamesToDisplay.length"
+          [@detailExpand]="column == expandedElement ? 'expanded' : 'collapsed'">
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedStart">
+            <mat-radio-button [value]="row" (change)="onChangeRadioChoice($event.value)">
+            </mat-radio-button>
+          </mat-radio-group>
+        </mat-cell>
+      </span>
 
             <span *ngIf="i !== 0">
-    <mat-header-cell mat-sort-header *matHeaderCellDef>
-    {{columnsNamesToDisplay[i]}}
-    </mat-header-cell>
-    <mat-cell *matCellDef="let element;">
-    {{element[column]}}
-    </mat-cell>
-  </span>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          {{columnsNamesToDisplay[i]}}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+          {{element[column]}}
+        </mat-cell>
+      </span>
 
         </ng-container>
 
@@ -72,30 +72,26 @@
 
         <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
             <span *ngIf="i === 0">
-    <mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
-      </mat-checkbox>
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-      </mat-checkbox>
-    </mat-cell>
-  </span>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </span>
 
             <span *ngIf="i !== 0">
-    <mat-header-cell mat-sort-header *matHeaderCellDef>
-    {{columnsNamesToDisplay[i-1]}}
-    </mat-header-cell>
-    <mat-cell *matCellDef="let element;">
-    {{element[column]}}
-    </mat-cell>
-  </span>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          {{columnsNamesToDisplay[i-1]}}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+          {{element[column]}}
+        </mat-cell>
+      </span>
 
         </ng-container>
 
@@ -103,6 +99,55 @@
         <mat-row *matRowDef="let row; columns: columnsFields;"></mat-row>
 
     </mat-table>
+
+
+    <!-- Multiples Checks -->
+    <mat-table *ngIf="tableHtml == 'multipleschecks'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
+
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
+
+
+            <span *ngIf="i !== 0">
+        <mat-header-cell *matHeaderCellDef>
+          <h3>Coleta</h3>
+          <div fxFlex="50"></div>
+          <h3 style="margin-left: -30px;">Entrega</h3>
+
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (change)="checkboxCollect(row)">
+          </mat-checkbox>
+          <div fxFlex="50"></div>
+          <mat-checkbox (change)="checkboxDeliver(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </span>
+
+
+            <span *ngIf="i === 0">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          <h3> {{columnsNamesToDisplay[i]}}</h3>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+          {{element[column]}}
+        </mat-cell>
+
+
+
+
+      </span>
+
+
+
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsFields; sticky: true;"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsFields;"></mat-row>
+
+    </mat-table>
+
 
 
 </div>

@@ -16,6 +16,7 @@ import { SearchFilterFrontService } from "../services/get-all-search/search-filt
 import { TableGGridModule } from "../components/table-g-grid/modules/table-g-grid.module";
 import { RadioButtonGModule } from "../components/radio-button-g/modules/radio-button-g.module";
 import { CheckButtonGModule } from "../components/check-button-g/modules/check-button-g.module";
+import { TableGGridPuzzleModule } from "../components/table-g-grid-puzzle/modules/table-g-grid-puzzle.module";
 
 
 @NgModule({
@@ -32,12 +33,13 @@ import { CheckButtonGModule } from "../components/check-button-g/modules/check-b
     BrowserAnimationsModule,
     MaterialModule,
     TabGModule,
+    TableGGridModule,
+    TableGGridPuzzleModule,
     ExpansionPanelModule,
     TreeGModule,
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
-    TableGGridModule,
     RadioButtonGModule,
     CheckButtonGModule
 
@@ -50,6 +52,8 @@ import { CheckButtonGModule } from "../components/check-button-g/modules/check-b
     BrowserAnimationsModule,
     MaterialModule,
     TabGModule,
+    TableGGridModule,
+    TableGGridPuzzleModule,
     ExpansionPanelModule,
     ApproachTestsComponent,
     TreeGModule,
@@ -57,7 +61,6 @@ import { CheckButtonGModule } from "../components/check-button-g/modules/check-b
     CardGBreakPointsModule,
     StepperGModule,
     FilterFrontComponent,
-    TableGGridModule,
     RadioButtonGModule,
     CheckButtonGModule
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
@@ -6,32 +6,51 @@ import { HttpParams } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Observable, debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs';
-
-import { TableDataSource } from './table-data-source-grid';
+import { TableDataSource } from './table-data-source-grid-puzzle';
 import { TableGGridService } from '../services/table-g-grid.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { CustomerDto } from '../dto/customer-dto';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'table-g-grid',
-  templateUrl: './table-data-source-grid.html',
+  selector: 'table-g-grid-puzzle',
+  templateUrl: './table-data-source-grid-puzzle.html',
   styles: [`
+
+
+.mat-row .mat-cell {
+  /* border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent; */
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  /* border-color: black; */
+}
 tr:hover  {
-  background-color:green;
+  /* background-color:green; */
   cursor:pointer;
 }
 th:hover  {
-  background-color:green;
-  color:white;
+
+  /* background-color:green; */
+  /* color:white; */
+  /* font-weight: bolder; */
 }
 td:hover{
-  color:white;
-}
-.input-search{
+  border-right: 1px solid black;
 
+  /* color:white; */
+  /* font-weight: bolder; */
 }
+
   `]
+
 })
-export class TableGGridComponent implements OnInit, AfterViewInit {
+export class TableGGridPuzzleComponent implements OnInit, AfterViewInit {
 
   dataSource: TableDataSource;
 
@@ -42,12 +61,11 @@ export class TableGGridComponent implements OnInit, AfterViewInit {
   @Input() pageSize: number;
   @Input() tableHtml: string;
 
-
   selection = new SelectionModel<any>(true, []);
 
-  expandedElement:string;
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChildren('CollectChecks') collectChecks: QueryList<MatCheckbox>
+  @ViewChildren('DeliverChecks') deliverChecks: QueryList<MatCheckbox>
 
   constructor(
     private _tableGGridService: TableGGridService,
@@ -55,7 +73,6 @@ export class TableGGridComponent implements OnInit, AfterViewInit {
     private _liveAnnouncer: LiveAnnouncer
   ) {
   }
-
 
   loadEntitiesPage() {
     this.dataSource.loadEntities(this.url,
@@ -141,10 +158,64 @@ export class TableGGridComponent implements OnInit, AfterViewInit {
     console.log(entity)
   }
 
-  checkboxLabel(row?: any): string {
-    return (!row)
-      ? `${this.isAllSelected() ? 'select' : 'deselect'} all`
-      : `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  checkboxCollect(id: string, checkStatus: MatCheckbox) {
+
+    if (checkStatus.checked) {
+      this.collectChecks.forEach(x => {
+        if (x.id !== id) {
+          x.disabled = true;
+        }
+      })
+
+      this.deliverChecks.forEach(xd => {
+        if (xd.id !== id + 'd') {
+          xd.disabled = true;
+        }
+      })
+    }
+
+    if (!checkStatus.checked) {
+      this.collectChecks.forEach(x => {
+        if (x.id === id && x.checked === false) {
+          this.collectChecks.forEach(cd => {
+            cd.disabled = false;
+          })
+          this.deliverChecks.forEach(xd => {
+            if (xd.id === id + 'd' && xd.checked === false) {
+              this.deliverChecks.forEach(cd2 => {
+                cd2.disabled = false;
+              })
+            }
+          })
+        }
+      })
+
+      this.deliverChecks.forEach(xd => {
+        if (xd.id === id + 'd' && xd.checked === false) {
+          this.collectChecks.forEach(cd => {
+            cd.disabled = false;
+          })
+
+
+          this.deliverChecks.forEach(x => {
+            if (x.id === id && x.checked === false) {
+              this.deliverChecks.forEach(cd2 => {
+                cd2.disabled = false;
+              })
+            }
+          })
+        }
+      })
+
+
+
+    }
+
+  }
+
+  checkboxDeliver(row?: any) {
+
+    console.log(row)
   }
 
   masterToggle() {
@@ -159,20 +230,11 @@ export class TableGGridComponent implements OnInit, AfterViewInit {
     return numSelected === numRows;
   }
 
-  selectedStart:number;
-  onChangeRadioChoice(event:any){
+  selectedStart: number;
+  onChangeRadioChoice(event: any) {
     this.selectedStart = event.id;
     console.log(event)
   }
-
-
-  checkboxCollect(row?: any){
-    console.log(row)
-   }
-   checkboxDeliver(row?: any){
-
-     console.log(row)
-   }
 
   ngAfterViewInit(): void {
     this.paginator.page

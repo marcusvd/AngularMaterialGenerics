@@ -1,0 +1,67 @@
+<div>
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-toolbar>
+        <span>My Application</span>
+        <div fxFlex></div>
+
+        <mat-form-field fxFlex="30%" class="input-search">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput [formControl]="queryField" (input)="onSearch()" type="text">
+        </mat-form-field>
+
+    </mat-toolbar>
+
+    <!-- CheckBox -->
+    <mat-table *ngIf="tableHtml == 'check'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
+
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
+
+
+            <span *ngIf="i !== 0">
+              <mat-header-cell *matHeaderCellDef>
+                <h3>Coleta</h3>
+                <div fxFlex="50"></div>
+                <h3 style="margin-left: -30px;">Entrega</h3>
+
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox #CollectChecks [id]="row.id" (change)="checkboxCollect(row.id, CollectChecks)">
+          </mat-checkbox>
+          <div fxFlex="50"></div>
+          <mat-checkbox #DeliverChecks [id]="row.id+'d'" (change)="checkboxCollect(row.id, DeliverChecks)">
+          </mat-checkbox>
+        </mat-cell>
+      </span>
+
+
+            <span *ngIf="i === 0">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+         <h3> {{columnsNamesToDisplay[i]}}</h3>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+          {{element[column]}}
+        </mat-cell>
+
+
+
+
+      </span>
+
+
+
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsFields; sticky: true;"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsFields;"></mat-row>
+
+    </mat-table>
+
+
+    <mat-paginator fxLayoutAlign="center center" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" aria-label="Select page">
+    </mat-paginator>
+</div>

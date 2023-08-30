@@ -12,5 +12,8 @@
 <!-- <table-g-grid [tableHtml]="'radio'" [pageSizeOptions]="[5,10,20]" [pageSize]="10" [columnsFields]="['id', 'name']" [columnsNamesToDisplay]="['Código', 'Nome']" [url]="'customers/GetAllPagedCustomersAsync'">
 
 </table-g-grid> -->
-<check-button (selected)="radioChose($event)" [position]="'horizontal'" [entities]="radiosEntitiesDic('place')">
-</check-button>
+<!-- <check-button (selected)="radioChose($event)" [position]="'horizontal'">
+</check-button> -->
+
+
+<table-g-grid-puzzle [tableHtml]="'check'" [pageSizeOptions]="[5,10,20]" [pageSize]="10" [columnsFields]="['name', 'id']" [columnsNamesToDisplay]="['Nome', 'Nome'] " [url]="'customers/GetAllPagedCustomersAsync'"></table-g-grid-puzzle>
