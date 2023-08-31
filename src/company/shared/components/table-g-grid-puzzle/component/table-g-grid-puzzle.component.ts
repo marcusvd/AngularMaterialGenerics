@@ -158,64 +158,59 @@ export class TableGGridPuzzleComponent implements OnInit, AfterViewInit {
     console.log(entity)
   }
 
-  checkboxCollect(id: string, checkStatus: MatCheckbox) {
+  checkboxesHandle(id: string, checkStatus: MatCheckbox) {
+    if (checkStatus.checked) this.checkBoxesToDisable(id);
 
-    if (checkStatus.checked) {
-      this.collectChecks.forEach(x => {
-        if (x.id !== id) {
-          x.disabled = true;
-        }
-      })
-
-      this.deliverChecks.forEach(xd => {
-        if (xd.id !== id + 'd') {
-          xd.disabled = true;
-        }
-      })
-    }
-
-    if (!checkStatus.checked) {
-      this.collectChecks.forEach(x => {
-        if (x.id === id && x.checked === false) {
-          this.collectChecks.forEach(cd => {
-            cd.disabled = false;
-          })
-          this.deliverChecks.forEach(xd => {
-            if (xd.id === id + 'd' && xd.checked === false) {
-              this.deliverChecks.forEach(cd2 => {
-                cd2.disabled = false;
-              })
-            }
-          })
-        }
-      })
-
-      this.deliverChecks.forEach(xd => {
-        if (xd.id === id + 'd' && xd.checked === false) {
-          this.collectChecks.forEach(cd => {
-            cd.disabled = false;
-          })
-
-
-          this.deliverChecks.forEach(x => {
-            if (x.id === id && x.checked === false) {
-              this.deliverChecks.forEach(cd2 => {
-                cd2.disabled = false;
-              })
-            }
-          })
-        }
-      })
-
-
-
-    }
-
+    if (!checkStatus.checked) this.checkBoxesToEnable(id);
   }
 
-  checkboxDeliver(row?: any) {
+  checkBoxesToDisable(id: string) {
 
-    console.log(row)
+    this.collectChecks.forEach(x => {
+      if (x.id !== id) {
+        x.disabled = true;
+      }
+    })
+
+    this.deliverChecks.forEach(xd => {
+      if (xd.id !== id + 'd') {
+        xd.disabled = true;
+      }
+    })
+  }
+
+  checkBoxesToEnable(id: string) {
+    this.deliverChecks.forEach(dcx => {
+
+      this.collectChecks.forEach(ccx => {
+        if (ccx.id === id && ccx.checked === false && dcx.id === id + 'd' && dcx.checked === false) {
+          this.collectChecks.forEach(ccxy => {
+            ccxy.disabled = false;
+          })
+          if (dcx.id === id + 'd' && dcx.checked === false) {
+            this.deliverChecks.forEach(dcxy => {
+              dcxy.disabled = false;
+            })
+          }
+        }
+      })
+    })
+
+    this.collectChecks.forEach(ccx => {
+      this.deliverChecks.forEach(dcx => {
+        if (dcx.id === id + 'd' && dcx.checked === false && ccx.id === id + 'd' && ccx.checked === false) {
+          this.deliverChecks.forEach(dcxy => {
+            dcxy.disabled = false;
+          })
+          if (ccx.id === id && ccx.checked === false) {
+            this.collectChecks.forEach(ccxy => {
+              ccxy.disabled = false;
+            })
+
+          }
+        }
+      })
+    })
   }
 
   masterToggle() {

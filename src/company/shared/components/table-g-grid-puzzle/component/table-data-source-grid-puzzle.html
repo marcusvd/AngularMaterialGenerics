@@ -29,10 +29,10 @@
         </mat-header-cell>
 
         <mat-cell *matCellDef="let row">
-          <mat-checkbox #CollectChecks [id]="row.id" (change)="checkboxCollect(row.id, CollectChecks)">
+          <mat-checkbox #CollectChecks [id]="row.id" (change)="checkboxesHandle(row.id, CollectChecks)">
           </mat-checkbox>
           <div fxFlex="50"></div>
-          <mat-checkbox #DeliverChecks [id]="row.id+'d'" (change)="checkboxCollect(row.id, DeliverChecks)">
+          <mat-checkbox #DeliverChecks [id]="row.id+'d'" (change)="checkboxesHandle(row.id, DeliverChecks)">
           </mat-checkbox>
         </mat-cell>
       </span>
