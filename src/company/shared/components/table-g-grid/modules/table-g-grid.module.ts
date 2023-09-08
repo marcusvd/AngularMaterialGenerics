@@ -6,6 +6,7 @@ import { MaterialModule } from "src/company/shared/modules/material.module";
 import { TableGenericListService } from "../../table-g-expandable/services/table-g-list.service";
 import { AlternativeService } from "../../table-g-expandable/services/alternative.service";
 import { TableGGridComponent } from "../component/table-g-grid.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 

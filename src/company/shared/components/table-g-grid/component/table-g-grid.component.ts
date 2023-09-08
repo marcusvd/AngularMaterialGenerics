@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
@@ -10,6 +10,7 @@ import { Observable, debounceTime, distinctUntilChanged, map, switchMap, tap } f
 import { TableDataSource } from './table-data-source-grid';
 import { TableGGridService } from '../services/table-g-grid.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'table-g-grid',
@@ -166,13 +167,63 @@ export class TableGGridComponent implements OnInit, AfterViewInit {
   }
 
 
-  checkboxCollect(row?: any){
-    console.log(row)
-   }
-   checkboxDeliver(row?: any){
+  @ViewChildren('CollectChecks') collectChecks: QueryList<MatCheckbox>
+  @ViewChildren('DeliverChecks') deliverChecks: QueryList<MatCheckbox>
+  
+  checkboxesHandle(id: string, checkStatus: MatCheckbox) {
+    if (checkStatus.checked) this.checkBoxesToDisable(id);
 
-     console.log(row)
-   }
+    if (!checkStatus.checked) this.checkBoxesToEnable(id);
+  }
+
+  checkBoxesToDisable(id: string) {
+
+    this.collectChecks.forEach(x => {
+      if (x.id !== id) {
+        x.disabled = true;
+      }
+    })
+
+    this.deliverChecks.forEach(xd => {
+      if (xd.id !== id + 'd') {
+        xd.disabled = true;
+      }
+    })
+  }
+
+  checkBoxesToEnable(id: string) {
+    this.deliverChecks.forEach(dcx => {
+
+      this.collectChecks.forEach(ccx => {
+        if (ccx.id === id && ccx.checked === false && dcx.id === id + 'd' && dcx.checked === false) {
+          this.collectChecks.forEach(ccxy => {
+            ccxy.disabled = false;
+          })
+          if (dcx.id === id + 'd' && dcx.checked === false) {
+            this.deliverChecks.forEach(dcxy => {
+              dcxy.disabled = false;
+            })
+          }
+        }
+      })
+    })
+
+    this.collectChecks.forEach(ccx => {
+      this.deliverChecks.forEach(dcx => {
+        if (dcx.id === id + 'd' && dcx.checked === false && ccx.id === id + 'd' && ccx.checked === false) {
+          this.deliverChecks.forEach(dcxy => {
+            dcxy.disabled = false;
+          })
+          if (ccx.id === id && ccx.checked === false) {
+            this.collectChecks.forEach(ccxy => {
+              ccxy.disabled = false;
+            })
+
+          }
+        }
+      })
+    })
+  }
 
   ngAfterViewInit(): void {
     this.paginator.page

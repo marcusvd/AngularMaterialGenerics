@@ -64,8 +64,7 @@ export class TableGGridPuzzleComponent implements OnInit, AfterViewInit {
   selection = new SelectionModel<any>(true, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChildren('CollectChecks') collectChecks: QueryList<MatCheckbox>
-  @ViewChildren('DeliverChecks') deliverChecks: QueryList<MatCheckbox>
+
 
   constructor(
     private _tableGGridService: TableGGridService,
@@ -157,7 +156,8 @@ export class TableGGridPuzzleComponent implements OnInit, AfterViewInit {
   onRowClicked(entity: any) {
     console.log(entity)
   }
-
+  @ViewChildren('CollectChecks') collectChecks: QueryList<MatCheckbox>
+  @ViewChildren('DeliverChecks') deliverChecks: QueryList<MatCheckbox>
   checkboxesHandle(id: string, checkStatus: MatCheckbox) {
     if (checkStatus.checked) this.checkBoxesToDisable(id);
 

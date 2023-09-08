@@ -17,6 +17,7 @@ import { TableGGridModule } from "../components/table-g-grid/modules/table-g-gri
 import { RadioButtonGModule } from "../components/radio-button-g/modules/radio-button-g.module";
 import { CheckButtonGModule } from "../components/check-button-g/modules/check-button-g.module";
 import { TableGGridPuzzleModule } from "../components/table-g-grid-puzzle/modules/table-g-grid-puzzle.module";
+import { GridGModule } from "../components/grid-g/modules/grid-g.module";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { TableGGridPuzzleModule } from "../components/table-g-grid-puzzle/module
     CardGBreakPointsModule,
     StepperGModule,
     RadioButtonGModule,
-    CheckButtonGModule
+    CheckButtonGModule,
+    GridGModule
 
   ],
   exports: [
@@ -62,7 +64,8 @@ import { TableGGridPuzzleModule } from "../components/table-g-grid-puzzle/module
     StepperGModule,
     FilterFrontComponent,
     RadioButtonGModule,
-    CheckButtonGModule
+    CheckButtonGModule,
+    GridGModule
 
   ],
   providers: [

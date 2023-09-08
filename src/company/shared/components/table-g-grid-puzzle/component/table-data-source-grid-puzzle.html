@@ -14,8 +14,8 @@
 
     </mat-toolbar>
 
-    <!-- CheckBox -->
-    <mat-table *ngIf="tableHtml == 'check'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
+    <!-- Multiples CheckBox -->
+    <mat-table *ngIf="tableHtml == 'multipleschecks'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
 
         <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
 

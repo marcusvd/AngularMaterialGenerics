@@ -58,6 +58,16 @@ export class TestsComponent implements OnInit, AfterViewInit {
 
 
   ]
+  headerCustomer: string[] = ['Nome', 'Responsável', 'Segmento']
+  customers: any[] = [
+    { name: 'Luziana Lanna', responsible: 'Ricardo Oliveira', segment: 'Escola'},
+    { name: 'Laender Vianna Advogados', responsible: 'Lucas Laender', segment: 'Direito'},
+    { name: 'Medrado Advogados', responsible: 'Bruno Medrado', segment: 'Direito'},
+    { name: 'Minas Ar Compressores', responsible: 'Wellington Batista', segment: 'Assistência técnica'},
+    { name: 'TotalTextil', responsible: 'Nikolas Teslar', segment: 'Fabrica Textil'},
+    { name: 'Clinica Oftal', responsible: 'André Vianna', segment: 'Saude'},
+    { name: 'Arc Ar-condicionado', responsible: 'Alexandre Cunha', segment: 'Assistência técnica'},
+  ]
 
 
 

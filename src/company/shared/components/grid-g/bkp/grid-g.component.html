@@ -1,0 +1,80 @@
+<!-- <div class="around">
+    <div class="colors-header" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="100px">
+        <div fxLayout="row" *ngFor="let field of header">
+            <div fxLayout="column">
+                <div class="grid-container" style="margin-bottom: -15px;">
+                    <h3> <b>{{field}}</b></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding-top:1px;"></div>
+    <div class="colors-body spacings-body" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="100px" *ngFor="let customer of entities">
+        <div fxLayout="column">
+            <div class="grid-container">
+                {{customer.name}}
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div class="grid-container">
+                {{customer.responsible}}
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div class="grid-container">
+                {{customer.segment}}
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="around">
+    <table>
+        <mat-card>
+            <tr>
+                <div class="colors-header" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="100px">
+                    <div fxLayout="row" *ngFor="let field of header">
+                        <div fxLayout="column">
+                            <td class="td-header">
+                                <div class="grid-container" style="margin-bottom: -15px;">
+                                    <h3> <b>{{field}}</b></h3>
+                                </div>
+                            </td>
+                        </div>
+                    </div>
+                </div>
+            </tr>
+        </mat-card>
+        <div style="padding-top:1px;"></div>
+
+        <tr>
+            <div class="colors-body spacings-body" fxLayout="row" fxLayoutGap="100px" *ngFor="let customer of entities">
+                <mat-card fxFlex>
+
+                    <td>
+                        <div fxLayout="column">
+                            <div class="grid-container">
+                                {{customer.name}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div fxLayout="column">
+                            <div class="grid-container">
+                                {{customer.responsible}}
+                            </div>
+                        </div>
+                    </td>
+                    <div fxFlex="25"></div>
+                    <td>
+                        <div fxLayout="column">
+                            <div class="grid-container">
+                                {{customer.segment}}
+                            </div>
+                        </div>
+                    </td>
+                </mat-card>
+
+            </div>
+        </tr>
+    </table>
+</div>

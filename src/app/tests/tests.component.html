@@ -16,4 +16,6 @@
 </check-button> -->
 
 
-<table-g-grid-puzzle [tableHtml]="'check'" [pageSizeOptions]="[5,10,20]" [pageSize]="10" [columnsFields]="['name', 'id']" [columnsNamesToDisplay]="['Nome', 'Nome'] " [url]="'customers/GetAllPagedCustomersAsync'"></table-g-grid-puzzle>
+<!-- <table-g-grid-puzzle [tableHtml]="'check'" [pageSizeOptions]="[5,10,20]" [pageSize]="10" [columnsFields]="['name', 'id']" [columnsNamesToDisplay]="['Nome', 'Nome'] " [url]="'customers/GetAllPagedCustomersAsync'"></table-g-grid-puzzle> -->
+
+<grid-g [header]="headerCustomer" [entities]="customers"></grid-g>

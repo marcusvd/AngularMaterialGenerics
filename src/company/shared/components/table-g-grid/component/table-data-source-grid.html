@@ -100,53 +100,52 @@
 
     </mat-table>
 
+  <!-- Multiples CheckBox -->
+  <mat-table *ngIf="tableHtml == 'multipleschecks'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
 
-    <!-- Multiples Checks -->
-    <mat-table *ngIf="tableHtml == 'multipleschecks'" [dataSource]="dataSource" matSort matSortActive="symbol" matSortDirection="asc">
-
-        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
-
-
-            <span *ngIf="i !== 0">
-        <mat-header-cell *matHeaderCellDef>
-          <h3>Coleta</h3>
-          <div fxFlex="50"></div>
-          <h3 style="margin-left: -30px;">Entrega</h3>
-
-        </mat-header-cell>
-
-        <mat-cell *matCellDef="let row">
-          <mat-checkbox (change)="checkboxCollect(row)">
-          </mat-checkbox>
-          <div fxFlex="50"></div>
-          <mat-checkbox (change)="checkboxDeliver(row)">
-          </mat-checkbox>
-        </mat-cell>
-      </span>
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsFields; let i = index;">
 
 
-            <span *ngIf="i === 0">
-        <mat-header-cell mat-sort-header *matHeaderCellDef>
-          <h3> {{columnsNamesToDisplay[i]}}</h3>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element;">
-          {{element[column]}}
-        </mat-cell>
+        <span *ngIf="i !== 0">
+          <mat-header-cell *matHeaderCellDef>
+            <h3>Coleta</h3>
+            <div fxFlex="50"></div>
+            <h3 style="margin-left: -30px;">Entrega</h3>
+
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox #CollectChecks [id]="row.id" (change)="checkboxesHandle(row.id, CollectChecks)">
+      </mat-checkbox>
+      <div fxFlex="50"></div>
+      <mat-checkbox #DeliverChecks [id]="row.id+'d'" (change)="checkboxesHandle(row.id, DeliverChecks)">
+      </mat-checkbox>
+    </mat-cell>
+  </span>
 
 
-
-
-      </span>
+        <span *ngIf="i === 0">
+    <mat-header-cell mat-sort-header *matHeaderCellDef>
+     <h3> {{columnsNamesToDisplay[i]}}</h3>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element;">
+      {{element[column]}}
+    </mat-cell>
 
 
 
 
-        </ng-container>
+  </span>
 
-        <mat-header-row *matHeaderRowDef="columnsFields; sticky: true;"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columnsFields;"></mat-row>
 
-    </mat-table>
+
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsFields; sticky: true;"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsFields;"></mat-row>
+
+</mat-table>
 
 
 
