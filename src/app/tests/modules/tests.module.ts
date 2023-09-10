@@ -6,6 +6,9 @@ import { MaterialModule } from "src/company/shared/modules/material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TestsRoutingModule } from "./tests-routing.module";
 import { CollectDeliverCreateResolver } from "../resolver/collect-deliver.resolver";
+import { GridGModule } from "src/company/shared/components/grid-g/modules/grid-g.module";
+import { SearchGModule } from "src/company/shared/components/search-g/modules/search-g.module";
+import { PaginationGModule } from "src/company/shared/components/pagination-g/modules/pagination-g.module";
 
 @NgModule({
   declarations: [
@@ -16,12 +19,16 @@ import { CollectDeliverCreateResolver } from "../resolver/collect-deliver.resolv
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    TestsRoutingModule
+    TestsRoutingModule,
+    GridGModule,
+    SearchGModule,
+    PaginationGModule
   ],
-  exports: [TestsComponent],
+  exports: [
+    TestsComponent
+  ],
   providers: [
     CollectDeliverCreateResolver
-
   ]
 })
 

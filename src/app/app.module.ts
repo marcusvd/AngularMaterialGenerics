@@ -10,6 +10,8 @@ import { MaterialModule } from 'src/company/shared/modules/material.module';
 import { AppInventoryService, AppServiceBudgetService } from './services/app.services';
 import { MatButtonModule } from '@angular/material/button';
 import { TestsModule } from './tests/modules/tests.module';
+import { GridGModule } from 'src/company/shared/components/grid-g/modules/grid-g.module';
+import { SearchGModule } from 'src/company/shared/components/search-g/modules/search-g.module';
 
 
 
@@ -24,8 +26,7 @@ import { TestsModule } from './tests/modules/tests.module';
     SharedModule,
     MaterialModule,
     MatButtonModule,
-    TestsModule
-
+    TestsModule,
   ],
   exports:[
 

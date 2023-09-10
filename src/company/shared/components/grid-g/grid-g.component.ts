@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'grid-g',
@@ -7,12 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GridGComponent implements OnInit {
 
-  @Input() header: string[] = []
-  @Input() entities: any[] = []
+  // @Input() titlesHeader: string[] = [];
+  // @Input() entities = new Observable<any[]>();
 
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.titlesHeader.length - 1)
   }
 
 }

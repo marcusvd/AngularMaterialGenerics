@@ -36,8 +36,7 @@ export class ClientListService extends BackEndService<CustomerDto, number> {
     protected override _Http: HttpClient
   ) {
     super(_Http,
-      environment._CLIENTS,
-      environment._CLIENTSBYIDALLINCLUDED
+      environment._base
     );
 
   }

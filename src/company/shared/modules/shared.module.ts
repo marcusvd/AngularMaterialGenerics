@@ -11,7 +11,6 @@ import { TreeGModule } from "../components/tree-g/modules/tree-g.module";
 import { CardGModule } from "../components/card-g/module/card-g.module";
 import { CardGBreakPointsModule } from "../components/card-g-breakpoints/module/card-g-breakpoints.module";
 import { StepperGModule } from "../components/stepper-g/module/stepper-g.module";
-import { FilterFrontComponent } from "../search/filter-front/filter-front.component";
 import { SearchFilterFrontService } from "../services/get-all-search/search-filter-front.service";
 import { TableGGridModule } from "../components/table-g-grid/modules/table-g-grid.module";
 import { RadioButtonGModule } from "../components/radio-button-g/modules/radio-button-g.module";
@@ -20,11 +19,10 @@ import { TableGGridPuzzleModule } from "../components/table-g-grid-puzzle/module
 import { GridGModule } from "../components/grid-g/modules/grid-g.module";
 
 
+
 @NgModule({
   declarations: [
     ApproachTestsComponent,
-    FilterFrontComponent,
-
   ],
   imports: [
     CommonModule,
@@ -43,7 +41,8 @@ import { GridGModule } from "../components/grid-g/modules/grid-g.module";
     StepperGModule,
     RadioButtonGModule,
     CheckButtonGModule,
-    GridGModule
+    GridGModule,
+
 
   ],
   exports: [
@@ -62,10 +61,10 @@ import { GridGModule } from "../components/grid-g/modules/grid-g.module";
     CardGModule,
     CardGBreakPointsModule,
     StepperGModule,
-    FilterFrontComponent,
     RadioButtonGModule,
     CheckButtonGModule,
-    GridGModule
+    GridGModule,
+
 
   ],
   providers: [
